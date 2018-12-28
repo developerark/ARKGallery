@@ -15,6 +15,7 @@
 		0A54EA7821D67F9200F4253A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A54EA7621D67F9200F4253A /* LaunchScreen.storyboard */; };
 		0A54EA7D21D67FC500F4253A /* ARKGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A54EA5C21D67E6400F4253A /* ARKGallery.framework */; };
 		0A54EA7E21D67FC500F4253A /* ARKGallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A54EA5C21D67E6400F4253A /* ARKGallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0A54EA8421D686B300F4253A /* ARKGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54EA8321D686B300F4253A /* ARKGalleryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		0A54EA7421D67F9200F4253A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A54EA7721D67F9200F4253A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A54EA7921D67F9200F4253A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A54EA8321D686B300F4253A /* ARKGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKGalleryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		0A54EA5E21D67E6400F4253A /* ARKGallery */ = {
 			isa = PBXGroup;
 			children = (
+				0A54EA8221D6869400F4253A /* src */,
 				0A54EA5F21D67E6400F4253A /* ARKGallery.h */,
 				0A54EA6021D67E6400F4253A /* Info.plist */,
 			);
@@ -111,6 +114,14 @@
 				0A54EA7921D67F9200F4253A /* Info.plist */,
 			);
 			path = ARKGalleryExample;
+			sourceTree = "<group>";
+		};
+		0A54EA8221D6869400F4253A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0A54EA8321D686B300F4253A /* ARKGalleryView.swift */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 				TargetAttributes = {
 					0A54EA5B21D67E6400F4253A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					0A54EA6A21D67F8F00F4253A = {
 						CreatedOnToolsVersion = 10.1;
@@ -225,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A54EA8421D686B300F4253A /* ARKGalleryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +405,7 @@
 		0A54EA6521D67E6400F4253A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -410,6 +424,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +433,7 @@
 		0A54EA6621D67E6400F4253A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -444,6 +460,7 @@
 		0A54EA7A21D67F9200F4253A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ARKGalleryExample/Info.plist;
@@ -462,6 +479,7 @@
 		0A54EA7B21D67F9200F4253A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ARKGalleryExample/Info.plist;
