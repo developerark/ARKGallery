@@ -26,6 +26,17 @@ public class ARKGalleryView: UIView {
                 self.paginationBar.addArrangedSubview(cursor)
             }
             paginationBar.arrangedSubviews.first?.backgroundColor = self.selectedColor
+            
+            // Setting the index observer from model on self
+            self.model?.indexObserver = {[unowned self] (index) in
+                self.imageView.image = slides[index].image
+                self.title = slides[index].title
+                self.subtitle = slides[index].subtitle
+                self.paginationBar.arrangedSubviews.forEach({ (view) in
+                    view.backgroundColor = self.deselectedColor
+                })
+                self.paginationBar.arrangedSubviews[index].backgroundColor = self.selectedColor
+            }
         }
     }
     
@@ -86,6 +97,10 @@ public class ARKGalleryView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.layout()
+        
+        // Add gesture recognizers
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        self.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -136,5 +151,18 @@ public class ARKGalleryView: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.gradientLayer.frame = self.bounds
+    }
+    
+    //MARK:- User Events
+    @objc func handleTap(sender: UITapGestureRecognizer){
+        let location = sender.location(in: self)
+        guard let model = self.model else {return}
+        if (location.x > self.bounds.width / 2){
+            // Go to next
+            model.next()
+        }else{
+            // Go to previous
+            model.previous()
+        }
     }
 }
