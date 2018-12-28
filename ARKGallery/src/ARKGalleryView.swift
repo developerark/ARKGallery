@@ -50,6 +50,8 @@ public class ARKGalleryView: UIView {
         return stackView
     }()
     
+    public let gradientLayer: CAGradientLayer = CAGradientLayer()
+    
     public let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -111,6 +113,10 @@ public class ARKGalleryView: UIView {
         self.paginationBar.heightAnchor.constraint(equalToConstant: 6).isActive = true
         
         // Setup the gradient layer
+        self.gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        self.gradientLayer.locations = [0.5, 1.1]
+        self.gradientLayer.frame = CGRect(x: 12, y: 156, width: 350, height: 500)
+        self.layer.addSublayer(self.gradientLayer)
         
         // Setup the title and sublitle labels
         self.addSubview(self.subtitleLabel)
@@ -125,5 +131,10 @@ public class ARKGalleryView: UIView {
         self.titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         self.titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        self.gradientLayer.frame = self.bounds
     }
 }
