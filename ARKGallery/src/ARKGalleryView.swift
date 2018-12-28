@@ -9,15 +9,16 @@ import UIKit
 
 public class ARKGalleryView: UIView {
     //MARK:- Data Source
-    public var data: [ARKSlide]?{
+    public var model: ARKGalleryViewModel?{
         didSet{
-            guard let data = self.data else {return}
-            guard let slide = data.first else {return}
+            guard let model = self.model else {return}
+            guard let slides = model.slides else {return}
+            guard let slide = slides.first else {return}
             self.imageView.image = slide.image
             self.title = slide.title
             self.subtitle = slide.subtitle
             
-            (0..<data.count).forEach { (_) in
+            (0..<slides.count).forEach { (_) in
                 let cursor = UIView()
                 cursor.backgroundColor = self.deselectedColor
                 cursor.layer.cornerRadius = 3
@@ -52,7 +53,6 @@ public class ARKGalleryView: UIView {
     public let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Title Placeholder"
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 24, weight: .heavy)
@@ -68,7 +68,6 @@ public class ARKGalleryView: UIView {
     public let subtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Subtitle Placeholder"
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
