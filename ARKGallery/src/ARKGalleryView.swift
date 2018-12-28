@@ -144,7 +144,7 @@ public class ARKGalleryView: UIView {
         self.titleLabel.bottomAnchor.constraint(equalTo: self.subtitleLabel.topAnchor, constant: -8).isActive = true
         self.titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
-        self.titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        self.titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
     }
     
