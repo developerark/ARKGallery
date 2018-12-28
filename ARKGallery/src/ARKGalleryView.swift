@@ -8,14 +8,45 @@
 import UIKit
 
 public class ARKGalleryView: UIView {
+    //MARK:- Data Source
+    public var data: [ARKSlide]?{
+        didSet{
+            guard let data = self.data else {return}
+            guard let slide = data.first else {return}
+            self.imageView.image = slide.image
+            self.title = slide.title
+            self.subtitle = slide.subtitle
+            
+            (0..<data.count).forEach { (_) in
+                let cursor = UIView()
+                cursor.backgroundColor = self.deselectedColor
+                cursor.layer.cornerRadius = 3
+                cursor.clipsToBounds = true
+                self.paginationBar.addArrangedSubview(cursor)
+            }
+            paginationBar.arrangedSubviews.first?.backgroundColor = self.selectedColor
+        }
+    }
     
-    // MARK:- Properties
+    // MARK:- UI Properties
     public let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .green
         return imageView
+    }()
+    
+    public let selectedColor: UIColor = .white
+    public let deselectedColor: UIColor = UIColor(white: 0, alpha: 0.4)
+    
+    public let paginationBar: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 4
+        return stackView
     }()
     
     public let titleLabel: UILabel = {
@@ -74,6 +105,11 @@ public class ARKGalleryView: UIView {
         self.imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         // Setup the pagination bar
+        self.addSubview(self.paginationBar)
+        self.paginationBar.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        self.paginationBar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        self.paginationBar.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
+        self.paginationBar.heightAnchor.constraint(equalToConstant: 6).isActive = true
         
         // Setup the gradient layer
         
