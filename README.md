@@ -1,6 +1,5 @@
 # ARKGallery
-Image Showcase Gallery in Swift
-This framework allows the user to create an image gallery as shown in the demo. 
+Image Showcase Gallery in Swift. This framework allows the user to create an image gallery as shown in the demo. 
 
 ## Demo
 <img src="ARKGalleryExample/demo/demo.gif" width="250">
@@ -18,14 +17,14 @@ Coming soon...
 ## Usage
 An example of the usage of this frame work can be found in `ViewController.swift` file within the `ARKGalleryExample` project.
 
-First create an instance of the `ARKGallery` or drag and drop outlet from the storyboard. Also, conform to `ARKGalleryDelegate` if you want to get notified for touch events like tap and long press. 
+First create an instance of the `ARKGallery` or drag and drop an outlet from the storyboard. Also, conform to `ARKGalleryDelegate` if you want to get notified for touch events like tap and long press. 
 ```swift
 class ViewController: UIViewController, ARKGalleryDelegate{
-    let gallery: ARKGalleryView()
+    let gallery: ARKGalleryView = ARKGalleryView()
 }
 ```
 
-Inside `viewDidLoad()` set the `gallery`'s touch delegate to self. If using storyboard, drag the gallery delegate to your ViewController instance.
+Inside `viewDidLoad(),` set the `gallery`'s touch delegate to self. If using storyboard, drag the gallery delegate to your ViewController instance.
 ```swift
     ...
     func viewDidLoad(){
