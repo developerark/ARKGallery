@@ -50,7 +50,7 @@ public class ARKGalleryView: UIView {
     public var delegate: ARKGalleryDelegate?
     
     // MARK:- UI Properties
-    public let imageView: UIImageView = {
+    @IBInspectable public let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
