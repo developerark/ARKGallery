@@ -11,7 +11,7 @@ public class ARKGalleryViewModel {
     //MARK:- Properties
     public var slides: [ARKSlide]? = nil
     
-    private var index: Int = 0 {
+    var index: Int = 0 {
         didSet{
             self.indexObserver?(self.index)
         }
