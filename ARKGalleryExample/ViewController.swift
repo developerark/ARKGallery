@@ -9,7 +9,9 @@ import UIKit
 import ARKGallery
 
 class ViewController: UIViewController, ARKGalleryDelegate {
-
+    
+    let gallery = ARKGalleryView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,15 +21,14 @@ class ViewController: UIViewController, ARKGalleryDelegate {
     fileprivate func setupUI(){
         self.view.backgroundColor = .white
         
-        let gallery = ARKGalleryView()
-        gallery.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(gallery)
-        gallery.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        gallery.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        gallery.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        gallery.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        self.gallery.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.gallery)
+        self.gallery.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.gallery.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        self.gallery.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        self.gallery.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        gallery.delegate = self
+        self.gallery.delegate = self
         
         let slide1 = ARKSlide()
         slide1.title = "Cliff"
