@@ -3,6 +3,7 @@ Image Showcase Gallery in Swift. This framework allows the user to create an ima
 
 ## Demo
 <img src="ARKGalleryExample/demo/demo.gif" width="250">
+[Checkout Video Demo](https://www.youtube.com/watch?v=w-NMBFWlmaI)
 
 ## Requirements
 iOS 11+
