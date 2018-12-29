@@ -12,6 +12,7 @@ public protocol ARKGalleryDelegate {
     func galleryLongPressed(index: Int);
 }
 
+@IBDesignable
 public class ARKGalleryView: UIView {
     //MARK:- Data Source
     public var model: ARKGalleryViewModel?{
@@ -57,8 +58,8 @@ public class ARKGalleryView: UIView {
         return imageView
     }()
     
-    public let selectedColor: UIColor = .white
-    public let deselectedColor: UIColor = UIColor(white: 0, alpha: 0.4)
+    @IBInspectable public let selectedColor: UIColor = .white
+    @IBInspectable public let deselectedColor: UIColor = UIColor(white: 0, alpha: 0.4)
     
     public let paginationBar: UIStackView = {
         let stackView = UIStackView()
@@ -80,7 +81,7 @@ public class ARKGalleryView: UIView {
         return label
     }()
     
-    public var title: String? {
+    @IBInspectable public var title: String? {
         didSet{
             self.titleLabel.text = self.title
         }
@@ -95,7 +96,7 @@ public class ARKGalleryView: UIView {
         return label
     }()
     
-    public var subtitle: String?{
+    @IBInspectable public var subtitle: String?{
         didSet{
             self.subtitleLabel.text = self.subtitle
         }
