@@ -7,6 +7,11 @@
 
 import UIKit
 
+public protocol ARKGalleryDelegate {
+    func galleryTapped(index: Int);
+    func galleryLongPressed(index: Int);
+}
+
 public class ARKGalleryView: UIView {
     //MARK:- Data Source
     public var model: ARKGalleryViewModel?{
@@ -39,6 +44,9 @@ public class ARKGalleryView: UIView {
             }
         }
     }
+    
+    //MARK:- Observers
+    public var delegate: ARKGalleryDelegate?
     
     // MARK:- UI Properties
     public let imageView: UIImageView = {
@@ -101,6 +109,10 @@ public class ARKGalleryView: UIView {
         // Add gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         self.addGestureRecognizer(tapGesture)
+        
+        // Add longtap recognizer
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        self.addGestureRecognizer(longPressGesture)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -163,6 +175,20 @@ public class ARKGalleryView: UIView {
         }else{
             // Go to previous
             model.previous()
+        }
+        
+        // Notify the observer that tap event occured
+        self.delegate?.galleryTapped(index: model.index)
+    }
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer){
+        guard let model = self.model else {return}
+        switch sender.state {
+        case .began:
+            // Notify the observer that long press event occured
+            self.delegate?.galleryLongPressed(index: model.index)
+        default:
+            ()
         }
     }
 }
