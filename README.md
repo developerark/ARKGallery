@@ -1,5 +1,8 @@
 # ARKGallery
 Image Showcase Gallery in Swift
 
+## Requirements
+iOS 11+
+
 ## Demo
-![](ARKGalleryExample/demo/demo.gif)
+<img src="ARKGalleryExample/demo/demo.gif" width="250">
